@@ -36,7 +36,7 @@ class DepartmentController extends Controller
         ]);
 
         $departments = Department::create($credentials);
-        return redirect()->route('departments.create')
+        return redirect()->route('departments.index')
             ->with('success', 'Department added successfully');
     }
 

@@ -5,9 +5,13 @@
 
         <x-sidebar />
 
-        
-
         <div class="page-wrapper">
+            @if (session('success'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('success') }}
+                </div>
+
+            @endif
             <div class="content">
                 <div class="row">
                     <div class="col-sm-4 col-3">
@@ -62,7 +66,7 @@
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <a class="dropdown-item" href="{{ route('appointments.edit', [$app->id]) }}"><i
                                                                 class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                                <a class="dropdown-item" href="{{ route('appointments.destroy',[$app->id]) }}" data-toggle="modal"
+                                                                <a class="dropdown-item" href="{{ route('appointments.destroy', [$app->id]) }}" data-toggle="modal"
                                                                 data-target="#delete_appointment"><i
                                                                 class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                             </div>
@@ -307,7 +311,7 @@
                             <img src="assets/img/sent.png" alt="" width="50" height="46">
                             <h3>Are you sure want to delete this Appointment?</h3>
                             <div class="m-t-20"> <a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
-                                <form action="{{ route('appointments.destroy',[$app->id]) }}" method="post">
+                                <form action="{{ route('appointments.destroy', [$app->id]) }}" method="post">
                                     @method('DELETE')
                                     @csrf
                                     <button type="submit" class="btn btn-danger">Delete</button>

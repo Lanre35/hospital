@@ -132,7 +132,7 @@ class AppointmentController extends Controller
             'status' => $request->status,
         ]);
 
-        return redirect()->route('appointments.index');
+        return redirect()->route('appointments.index')->with('success', 'Appointment updated successfully');
     }
 
     /**
