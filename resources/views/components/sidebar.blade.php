@@ -16,7 +16,7 @@
                     <a href="{{ route('appointments.index') }}"><i class="fa fa-calendar"></i> <span>Appointments</span></a>
                 </li>
                 <li>
-                    <a href="{{route('schedule') }}"><i class="fa fa-calendar-check-o"></i> <span>Doctor Schedule</span></a>
+                    <a href="{{route('schedule.index') }}"><i class="fa fa-calendar-check-o"></i> <span>Doctor Schedule</span></a>
                 </li>
                 <li>
                     <a href="{{route('departments.index') }}"><i class="fa fa-hospital-o"></i> <span>Departments</span></a>
@@ -24,10 +24,10 @@
                 <li class="submenu">
                     <a href="#"><i class="fa fa-user"></i> <span> Employees </span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
-                        <li><a href="{{ route('employees') }}">Employees List</a></li>
-                        <li><a href="leaves.html">Leaves</a></li>
-                        <li><a href="holidays.html">Holidays</a></li>
-                        <li><a href="attendance.html">Attendance</a></li>
+                        <li><a href="{{ route('employees.index') }}">Employees List</a></li>
+                        <li><a href="#">Leaves</a></li>
+                        <li><a href="#">Holidays</a></li>
+                        <li><a href="#">Attendance</a></li>
                     </ul>
                 </li>
                 <li class="submenu">

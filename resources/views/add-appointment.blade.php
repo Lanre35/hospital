@@ -69,7 +69,7 @@
                                     <div class="form-group">
                                         <label>Appointment Date</label>
                                         <div class="cal-icon">
-                                            <input name="date" type="date" class="form-control datetimepicker">
+                                            <input name="date" type="text" class="form-control datetimepicker">
                                         </div>
                                     </div>
                                 </div>

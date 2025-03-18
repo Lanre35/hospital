@@ -41,4 +41,9 @@ class Doctor extends Model
         return $this->hasMany(Appointment::class);
     }
 
+    public function scheldules(): HasMany
+    {
+        return $this->hasMany(Schedule::class);
+    }
+
 }

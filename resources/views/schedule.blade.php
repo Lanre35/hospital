@@ -6,13 +6,18 @@
        <x-sidebar/>
 
         <div class="page-wrapper">
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
             <div class="content">
                 <div class="row">
                     <div class="col-sm-4 col-3">
                         <h4 class="page-title">Schedule</h4>
                     </div>
                     <div class="col-sm-8 col-9 text-right m-b-20">
-                        <a href="add-schedule.html" class="btn btn btn-primary btn-rounded float-right"><i
+                        <a href="{{ route('schedule.create') }}" class="btn btn btn-primary btn-rounded float-right"><i
                                 class="fa fa-plus"></i> Add Schedule</a>
                     </div>
                 </div>
@@ -31,27 +36,36 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td><img width="28" height="28" src="assets/img/user.jpg"
-                                                class="rounded-circle m-r-5" alt=""> Henry Daniels</td>
-                                        <td>Cardiology</td>
-                                        <td>Sunday, Monday, Tuesday</td>
-                                        <td>10:00 AM - 7:00 PM</td>
-                                        <td><span class="custom-badge status-green">Active</span></td>
-                                        <td class="text-right">
-                                            <div class="dropdown dropdown-action">
-                                                <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
-                                                    aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="edit-schedule.html"><i
-                                                            class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal"
-                                                        data-target="#delete_schedule"><i class="fa fa-trash-o m-r-5"></i>
-                                                        Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    @foreach ($schedules as $schedule)
+
+                                        <tr>
+                                            <td><img width="28" height="28" src="assets/img/user.jpg"
+                                                class="rounded-circle m-r-5" alt="">{{ $schedule->doctor->firstname }} {{ $schedule->doctor->lastname }}</td>
+                                                <td>{{ $schedule->department->department }}</td>
+                                                <td>{{ $schedule->days }}</td>
+                                                <td>{{ $schedule->start_time }} - {{ $schedule->end_time }} </td>
+                                                <td>
+                                                    @if ($schedule->status == 'active')
+                                                        <span class="custom-badge status-green">{{ $schedule->status }}</span>
+                                                    @else
+                                                        <span class="custom-badge status-red">{{ $schedule->status }}</span>
+                                                    @endif
+                                                </td>
+                                                <td class="text-right">
+                                                    <div class="dropdown dropdown-action">
+                                                        <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
+                                                        aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                            <a class="dropdown-item" href="{{ route('schedule.edit', [$schedule->id]) }}"><i
+                                                                class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                                <a class="dropdown-item" href="#" data-toggle="modal"
+                                                                data-target="#delete_schedule"><i class="fa fa-trash-o m-r-5"></i>
+                                                                Delete</a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -289,7 +303,11 @@
                         <img src="assets/img/sent.png" alt="" width="50" height="46">
                         <h3>Are you sure want to delete this Schedule?</h3>
                         <div class="m-t-20"> <a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <form action="{{ route('schedule.destroy', [$schedule->id]) }}" method="POST" style="display: inline;">
+                                @method('DELETE')
+                                @csrf
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
                         </div>
                     </div>
                 </div>
