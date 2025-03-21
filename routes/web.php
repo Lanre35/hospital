@@ -8,7 +8,9 @@ use App\Http\Controllers\PatientController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\EmployeesController;
+use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\SettingController;
 
 // login route.
 Route::view('/', 'login')->name('login');
@@ -16,15 +18,11 @@ Route::post('/login', [AuthController::class, 'login']);
 
 
 // signup route.
-
 Route::view('/save', 'save')->name('signup');
 Route::post('/save',[AuthController::class,'register']);
 
 Route::view('/dashboard', 'dashboard')->middleware('verify')->name('dashboard');
 Route::get('/logout', [AuthController::class,'logout']);
-Route::view('profile','profile' )->middleware('verify');
-
-
 
 
 // Patient resource route
@@ -40,6 +38,7 @@ Route::resource('schedule',ScheduleController::class)->middleware('verify');
 
 // Doctor route
 Route::resource('doctors',DoctorController::class)->middleware('verify');
+Route::get('doctors/editProfile/{id}',[DoctorController::class,'editProfile'])->middleware('verify');
 
 
 // Department route
@@ -49,4 +48,10 @@ Route::resource('departments',DepartmentController::class)->middleware('verify')
 // Employees route
 Route::resource('employees',EmployeesController::class)->middleware('verify');
 
+// leaves route
+
+Route::resource('leave',LeaveController::class)->middleware('verify');
+
+// settings route
+Route::resource('settings',SettingController::class)->middleware('verify');
 

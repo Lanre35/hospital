@@ -62,6 +62,12 @@ class DoctorController extends Controller
 
     }
 
+    public function editProfile(string $id)
+    {
+        $editProfile = Doctor::find($id);
+        return view('editProfile',['editProfile'=>$editProfile]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      */

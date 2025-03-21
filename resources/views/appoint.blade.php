@@ -311,7 +311,7 @@
                             <img src="assets/img/sent.png" alt="" width="50" height="46">
                             <h3>Are you sure want to delete this Appointment?</h3>
                             <div class="m-t-20"> <a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
-                                <form action="{{ route('appointments.destroy', [$app->id]) }}" method="post">
+                                <form action="{{ route('appointments.destroy', [$app->id]) }}" method="post" style="display: inline">
                                     @method('DELETE')
                                     @csrf
                                     <button type="submit" class="btn btn-danger">Delete</button>

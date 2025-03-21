@@ -1,111 +1,110 @@
 <x-layout>
+<div class="main-wrapper">
+    <x-header/>
 
-   <x-header/>
-   <x-sidebar/>
+    <x-setting-sidebar/>
     <div class="page-wrapper">
-        @if (session('success'))
-            <div class="alert alert-success" role="alert">
-                {{ session('success') }}
-            </div>
-
-        @endif
         <div class="content">
             <div class="row">
-                <div class="col-sm-4 col-3">
-                    <h4 class="page-title">Employee</h4>
-                </div>
-                <div class="col-sm-8 col-9 text-right m-b-20">
-                    <a href="{{ route('employees.create') }}" class="btn btn-primary float-right btn-rounded"><i class="fa fa-plus"></i> Add Employee</a>
-                </div>
-            </div>
-            <div class="row filter-row">
-                <div class="col-sm-6 col-md-3">
-                    <div class="form-group form-focus">
-                        <label class="focus-label">Employee ID</label>
-                        <input type="text" class="form-control floating">
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-3">
-                    <div class="form-group form-focus">
-                        <label class="focus-label">Employee Name</label>
-                        <input type="text" class="form-control floating">
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-3">
-                    <div class="form-group form-focus select-focus">
-                        <label class="focus-label">Role</label>
-                        <select class="select floating">
-                            <option>Select Role</option>
-                            <option>Nurse</option>
-                            <option>Pharmacist</option>
-                            <option>Laboratorist</option>
-                            <option>Accountant</option>
-                            <option>Receptionist</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-3">
-                    <a href="#" class="btn btn-success btn-block"> Search </a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="table-responsive">
-                        <table class="table table-striped custom-table">
-                            <thead>
-                                <tr>
-                                    <th style="min-width:200px;">Name</th>
-                                    <th>Employee ID</th>
-                                    <th>Email</th>
-                                    <th>Mobile</th>
-                                    <th style="min-width: 110px;">Join Date</th>
-                                    <th>Role</th>
-                                    <th class="text-right">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($employees as $employee)
-                                    <tr>
-                                        <td>
-                                            <img width="28" height="28" src="assets/img/user.jpg" class="rounded-circle" alt=""> <h2>{{ $employee->firstname }} {{ $employee->lastname }}</h2>
-                                        </td>
-                                        <td>{{ $employee->employee_id }}</td>
-                                        <td>{{ $employee->email }}</td>
-                                        <td>{{ $employee->phone }}</td>
-                                        <td>{{ $employee->date }}</td>
-                                        <td>
-                                            @if($employee->role == 'Nurse')
-                                                <span class="custom-badge status-blue">{{ $employee->role }}</span>
-                                            @elseif($employee->role == 'Pharmacist')
-                                                <span class="custom-badge status-red">{{ $employee->role }}</span>
-                                            @elseif($employee->role == 'Laboratorist')
-                                                <span class="custom-badge status-green">{{ $employee->role }}</span>
-                                            @elseif($employee->role == 'Accountant')
-                                                <span class="custom-badge status-orange">{{ $employee->role }}</span>
-                                            @elseif($employee->role == 'Receptionist')
-                                                <span class="custom-badge status-pink">{{ $employee->role }}</span>
-                                            @elseif ($employee->role == 'Admin')
-                                                <span class="custom-badge status-orange">{{ $employee->role }}</span>
-                                            @elseif($employee->role == 'Doctor')
-                                                <span class="custom-badge status-purple">{{ $employee->role }}</span>
-                                            @else
-                                                <span class="custom-badge status-gray">{{ $employee->role }}</span>
-                                            @endif
-                                        </td>
-                                        <td class="text-right">
-                                            <div class="dropdown dropdown-action">
-                                                <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="{{ route('employees.edit', [$employee->id]) }}"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                    <a class="dropdown-item" href="{{ route('employees.destroy', [$employee->id]) }}" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="col-lg-8 offset-lg-2">
+                    <form>
+                        <h3 class="page-title">Company Settings</h3>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Company Name <span class="text-danger">*</span></label>
+                                    <input class="form-control" type="text" value="">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Contact Person</label>
+                                    <input class="form-control " value="Daniel Porter" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>Address</label>
+                                    <input class="form-control " value="3864 Quiet Valley Lane, Sherman Oaks, CA, 91403"
+                                        type="text">
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-3">
+                                <div class="form-group">
+                                    <label>Country</label>
+                                    <select class="form-control select">
+                                        <option>USA</option>
+                                        <option>United Kingdom</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-3">
+                                <div class="form-group">
+                                    <label>City</label>
+                                    <input class="form-control" value="Sherman Oaks" type="text">
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-3">
+                                <div class="form-group">
+                                    <label>State/Province</label>
+                                    <select class="form-control select">
+                                        <option>California</option>
+                                        <option>Alaska</option>
+                                        <option>Alabama</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-3">
+                                <div class="form-group">
+                                    <label>Postal Code</label>
+                                    <input class="form-control" value="91403" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input class="form-control" value="danielporter@example.com" type="email">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Phone Number</label>
+                                    <input class="form-control" value="818-978-7102" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Mobile Number</label>
+                                    <input class="form-control" value="818-635-5579" type="text">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Fax</label>
+                                    <input class="form-control" value="818-978-7102" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>Website Url</label>
+                                    <input class="form-control" value="https://www.example.com" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 text-center m-t-20">
+                                <button type="button" class="btn btn-primary submit-btn">Save</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -126,7 +125,8 @@
                                         <span class="message-author">Richard Miles </span>
                                         <span class="message-time">12:28 AM</span>
                                         <div class="clearfix"></div>
-                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                            adipiscing</span>
                                     </div>
                                 </div>
                             </a>
@@ -141,7 +141,8 @@
                                         <span class="message-author">John Doe</span>
                                         <span class="message-time">1 Aug</span>
                                         <div class="clearfix"></div>
-                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                            adipiscing</span>
                                     </div>
                                 </div>
                             </a>
@@ -156,7 +157,8 @@
                                         <span class="message-author"> Tarah Shropshire </span>
                                         <span class="message-time">12:28 AM</span>
                                         <div class="clearfix"></div>
-                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                            adipiscing</span>
                                     </div>
                                 </div>
                             </a>
@@ -171,7 +173,8 @@
                                         <span class="message-author">Mike Litorus</span>
                                         <span class="message-time">12:28 AM</span>
                                         <div class="clearfix"></div>
-                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                            adipiscing</span>
                                     </div>
                                 </div>
                             </a>
@@ -186,7 +189,8 @@
                                         <span class="message-author"> Catherine Manseau </span>
                                         <span class="message-time">12:28 AM</span>
                                         <div class="clearfix"></div>
-                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                            adipiscing</span>
                                     </div>
                                 </div>
                             </a>
@@ -201,7 +205,8 @@
                                         <span class="message-author"> Domenic Houston </span>
                                         <span class="message-time">12:28 AM</span>
                                         <div class="clearfix"></div>
-                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                            adipiscing</span>
                                     </div>
                                 </div>
                             </a>
@@ -216,7 +221,8 @@
                                         <span class="message-author"> Buster Wigton </span>
                                         <span class="message-time">12:28 AM</span>
                                         <div class="clearfix"></div>
-                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                            adipiscing</span>
                                     </div>
                                 </div>
                             </a>
@@ -231,7 +237,8 @@
                                         <span class="message-author"> Rolland Webber </span>
                                         <span class="message-time">12:28 AM</span>
                                         <div class="clearfix"></div>
-                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                            adipiscing</span>
                                     </div>
                                 </div>
                             </a>
@@ -246,7 +253,8 @@
                                         <span class="message-author"> Claire Mapes </span>
                                         <span class="message-time">12:28 AM</span>
                                         <div class="clearfix"></div>
-                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                            adipiscing</span>
                                     </div>
                                 </div>
                             </a>
@@ -261,7 +269,8 @@
                                         <span class="message-author">Melita Faucher</span>
                                         <span class="message-time">12:28 AM</span>
                                         <div class="clearfix"></div>
-                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                            adipiscing</span>
                                     </div>
                                 </div>
                             </a>
@@ -276,7 +285,8 @@
                                         <span class="message-author">Jeffery Lalor</span>
                                         <span class="message-time">12:28 AM</span>
                                         <div class="clearfix"></div>
-                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                            adipiscing</span>
                                     </div>
                                 </div>
                             </a>
@@ -291,7 +301,8 @@
                                         <span class="message-author">Loren Gatlin</span>
                                         <span class="message-time">12:28 AM</span>
                                         <div class="clearfix"></div>
-                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                            adipiscing</span>
                                     </div>
                                 </div>
                             </a>
@@ -306,7 +317,8 @@
                                         <span class="message-author">Tarah Shropshire</span>
                                         <span class="message-time">12:28 AM</span>
                                         <div class="clearfix"></div>
-                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+                                        <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                            adipiscing</span>
                                     </div>
                                 </div>
                             </a>
@@ -319,23 +331,5 @@
             </div>
         </div>
     </div>
-    <div id="delete_employee" class="modal fade delete-modal" role="dialog">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body text-center">
-                    <img src="assets/img/sent.png" alt="" width="50" height="46">
-                    <h3>Are you sure want to delete this Employee?</h3>
-                    <div class="m-t-20"> <a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
-                        <form action="{{ route('employees.destroy', [$employee->id]) }}" method="post" style="display:inline">
-                            @method('DELETE')
-                            @csrf
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div
-
+</div>
 </x-layout>

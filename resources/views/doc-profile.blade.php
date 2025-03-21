@@ -11,7 +11,7 @@
                     </div>
 
                     <div class="col-sm-5 col-6 text-right m-b-30">
-                        <a href="edit-profile.html" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Edit Profile</a>
+                        <a href="{{ url('doctors/editProfile',[$find->id]) }}" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Edit Profile</a>
                     </div>
                 </div>
                 <div class="card-box profile-header">
@@ -20,7 +20,7 @@
                             <div class="profile-view">
                                 <div class="profile-img-wrap">
                                     <div class="profile-img">
-                                        <a href="#"><img class="avatar" src="assets/img/doctor-03.jpg" alt=""></a>
+                                        <a href="#"><img class="avatar" src="/assets/img/doctor-03.jpg" alt=""></a>
                                     </div>
                                 </div>
                                 <div class="profile-basic">

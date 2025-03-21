@@ -52,9 +52,11 @@ class AppointmentController extends Controller
         $selectedDepartment = $request->input('departments');
         $selectedPatient = $request->input('patients');
 
+        $appointmentId = rand(0, 99);
+        $appoint = str_pad($appointmentId, 2, '0', STR_PAD_LEFT);
 
         $appointment = Appointment::create([
-            'appointment_id' => $request->appointment_id,
+            'appointment_id' => $request->appointment_id.'-000'.$appoint,
             'age' => $request->age,
             'time' => $request->time,
             'email' => $request->email,

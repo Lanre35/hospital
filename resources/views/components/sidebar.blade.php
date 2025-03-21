@@ -25,7 +25,7 @@
                     <a href="#"><i class="fa fa-user"></i> <span> Employees </span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
                         <li><a href="{{ route('employees.index') }}">Employees List</a></li>
-                        <li><a href="#">Leaves</a></li>
+                        <li><a href="{{ route('leave.index') }}">Leaves</a></li>
                         <li><a href="#">Holidays</a></li>
                         <li><a href="#">Attendance</a></li>
                     </ul>
@@ -92,7 +92,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="settings.html"><i class="fa fa-cog"></i> <span>Settings</span></a>
+                    <a href="{{ route('settings.index') }}"><i class="fa fa-cog"></i> <span>Settings</span></a>
                 </li>
                 <li class="menu-title">UI Elements</li>
                 <li class="submenu">

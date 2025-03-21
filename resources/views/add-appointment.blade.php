@@ -17,7 +17,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
 										<label>Appointment ID</label>
-										<input name="appointment_id" class="form-control" type="text" value="{{ 'APT0000' }}">
+										<input name="appointment_id" class="form-control" type="text" value="">
 									</div>
                                 </div>
                                 <div class="col-md-6">

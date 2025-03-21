@@ -1,166 +1,114 @@
 <x-layout>
     <div class="main-wrapper">
+        <x-header />
 
-
-        <x-header/>
-
-        <x-sidebar/>
+        <x-sidebar />
         <div class="page-wrapper">
             <div class="content">
                 <div class="row">
-                    <div class="col-sm-7 col-6">
-                        <h4 class="page-title">My Profile</h4>
-                    </div>
-
-                    <div class="col-sm-5 col-6 text-right m-b-30">
-                        <a href="edit-profile.html" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Edit
-                            Profile</a>
+                    <div class="col-lg-8 offset-lg-2">
+                        <h4 class="page-title">Edit Employee</h4>
                     </div>
                 </div>
-                <div class="card-box profile-header">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="profile-view">
-                                <div class="profile-img-wrap">
-                                    <div class="profile-img">
-                                        <a href="#"><img class="avatar" src="assets/img/doctor-03.jpg" alt=""></a>
-                                    </div>
-                                </div>
-                                <div class="profile-basic">
-                                    <div class="row">
-                                        <div class="col-md-5">
-                                            <div class="profile-info-left">
-                                                <h3 class="user-name m-t-0 mb-0">Cristina Groves</h3>
-                                                <small class="text-muted">Gynecologist</small>
-                                                <div class="staff-id">Employee ID : DR-0001</div>
-                                                <div class="staff-msg"><a href="chat.html" class="btn btn-primary">Send
-                                                        Message</a></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <ul class="personal-info">
-                                                <li>
-                                                    <span class="title">Phone:</span>
-                                                    <span class="text"><a href="#">770-889-6484</a></span>
-                                                </li>
-                                                <li>
-                                                    <span class="title">Email:</span>
-                                                    <span class="text"><a href="#">cristinagroves@example.com</a></span>
-                                                </li>
-                                                <li>
-                                                    <span class="title">Birthday:</span>
-                                                    <span class="text">3rd March</span>
-                                                </li>
-                                                <li>
-                                                    <span class="title">Address:</span>
-                                                    <span class="text">714 Burwell Heights Road, Bridge City, TX,
-                                                        77611</span>
-                                                </li>
-                                                <li>
-                                                    <span class="title">Gender:</span>
-                                                    <span class="text">Female</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="profile-tabs">
-                    <ul class="nav nav-tabs nav-tabs-bottom">
-                        <li class="nav-item"><a class="nav-link active" href="#about-cont" data-toggle="tab">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#bottom-tab2" data-toggle="tab">Profile</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#bottom-tab3" data-toggle="tab">Messages</a></li>
-                    </ul>
-
-                    <div class="tab-content">
-                        <div class="tab-pane show active" id="about-cont">
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                        <form action="{{ route('employees.update', [$employee->id]) }}" method="post">
+                            @method('PUT')
+                            @csrf
                             <div class="row">
-                                <div class="col-md-12">
-                                    <div class="card-box">
-                                        <h3 class="card-title">Education Informations</h3>
-                                        <div class="experience-box">
-                                            <ul class="experience-list">
-                                                <li>
-                                                    <div class="experience-user">
-                                                        <div class="before-circle"></div>
-                                                    </div>
-                                                    <div class="experience-content">
-                                                        <div class="timeline-content">
-                                                            <a href="#/" class="name">International College of Medical
-                                                                Science (UG)</a>
-                                                            <div>MBBS</div>
-                                                            <span class="time">2001 - 2003</span>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="experience-user">
-                                                        <div class="before-circle"></div>
-                                                    </div>
-                                                    <div class="experience-content">
-                                                        <div class="timeline-content">
-                                                            <a href="#/" class="name">International College of Medical
-                                                                Science (PG)</a>
-                                                            <div>MD - Obstetrics & Gynaecology</div>
-                                                            <span class="time">1997 - 2001</span>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>First Name <span class="text-danger">*</span></label>
+                                        <input name="firstname" class="form-control" value="{{ $employee->firstname }}" type="text">
                                     </div>
-                                    <div class="card-box mb-0">
-                                        <h3 class="card-title">Experience</h3>
-                                        <div class="experience-box">
-                                            <ul class="experience-list">
-                                                <li>
-                                                    <div class="experience-user">
-                                                        <div class="before-circle"></div>
-                                                    </div>
-                                                    <div class="experience-content">
-                                                        <div class="timeline-content">
-                                                            <a href="#/" class="name">Consultant Gynecologist</a>
-                                                            <span class="time">Jan 2014 - Present (4 years 8 months)</span>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="experience-user">
-                                                        <div class="before-circle"></div>
-                                                    </div>
-                                                    <div class="experience-content">
-                                                        <div class="timeline-content">
-                                                            <a href="#/" class="name">Consultant Gynecologist</a>
-                                                            <span class="time">Jan 2009 - Present (6 years 1 month)</span>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="experience-user">
-                                                        <div class="before-circle"></div>
-                                                    </div>
-                                                    <div class="experience-content">
-                                                        <div class="timeline-content">
-                                                            <a href="#/" class="name">Consultant Gynecologist</a>
-                                                            <span class="time">Jan 2004 - Present (5 years 2 months)</span>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Last Name</label>
+                                        <input name="lastname" value="{{ $employee->lastname }}" class="form-control" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Username <span class="text-danger">*</span></label>
+                                        <input name="username" value="{{ $employee->username }}" class="form-control" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Email <span class="text-danger">*</span></label>
+                                        <input name="email" value="{{ $employee->email }}" class="form-control" type="email">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input name="password" value="{{ $employee->password }}" class="form-control" type="password">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Confirm Password</label>
+                                        <input name="confirmation_password" value="{{ $employee->password }}" class="form-control" type="password">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Employee ID <span class="text-danger">*</span></label>
+                                        <input name="employee_id" value="{{ $employee->employee_id }}" type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Joining Date <span class="text-danger">*</span></label>
+                                        <div class="cal-icon">
+                                            <input name="date" value="{{ $employee->date }}" class="form-control datetimepicker" type="text">
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Phone </label>
+                                        <input name="phone" value="{{ $employee->phone }}" class="form-control" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Role</label>
+                                        <select name="role" class="select">
+                                            <option value="{{ $employee->role }}">{{ $employee->role }}</option>
+                                            <option value="admin">Admin</option>
+                                            <option value="doctor">Doctor</option>
+                                            <option value="nurse">Nurse</option>
+                                            <option value="laboratory">Laboratorist</option>
+                                            <option value="pharmist">Pharmacist</option>
+                                            <option value="accountant">Accountant</option>
+                                            <option value="receptionist">Receptionist</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="tab-pane" id="bottom-tab2">
-                            Tab content 2
-                        </div>
-                        <div class="tab-pane" id="bottom-tab3">
-                            Tab content 3
-                        </div>
+                            <div class="form-group">
+                                <label class="display-block">Status</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="status" id="employee_active"
+                                        value="active">
+                                    <label class="form-check-label" for="employee_active">
+                                        Active
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="status" id="employee_inactive"
+                                        value="inactive">
+                                    <label class="form-check-label" for="employee_inactive">
+                                        Inactive
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="m-t-20 text-center">
+                                <button class="btn btn-primary submit-btn">Save</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
