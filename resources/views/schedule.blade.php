@@ -58,7 +58,7 @@
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <a class="dropdown-item" href="{{ route('schedule.edit', [$schedule->id]) }}"><i
                                                                 class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                                <a class="dropdown-item" href="#" data-toggle="modal"
+                                                                <a class="dropdown-item" href="{{ route('schedule.destroy', [$schedule->id]) }}" data-toggle="modal"
                                                                 data-target="#delete_schedule"><i class="fa fa-trash-o m-r-5"></i>
                                                                 Delete</a>
                                                             </div>
