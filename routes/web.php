@@ -12,7 +12,9 @@ use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\SettingController;
 
-// login route.
+
+
+//login route.
 Route::view('/', 'login')->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 
