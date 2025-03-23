@@ -273,8 +273,7 @@
                             </li>
                             <li>
                                 <a href="chat.html">
-                                    <div class="
-    list-item">
+                                    <div class="list-item">
                                         <div class="list-left">
                                             <span class="avatar">T</span>
                                         </div>
