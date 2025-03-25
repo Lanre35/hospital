@@ -69,7 +69,7 @@
                                     <div class="form-group">
                                         <label>Age</label>
                                         <div class="cal-icon">
-                                            <input name="age" type="text" class="form-control datetimepicker">
+                                            <input name="age" type="text" class="form-control">
                                         </div>
                                     </div>
                                 </div>
