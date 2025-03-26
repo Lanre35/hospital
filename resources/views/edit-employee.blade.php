@@ -76,14 +76,7 @@
                                     <div class="form-group">
                                         <label>Role</label>
                                         <select name="role" class="select">
-                                            <option value="{{ $employee->role }}">{{ $employee->role }}</option>
-                                            <option value="admin">Admin</option>
-                                            <option value="doctor">Doctor</option>
-                                            <option value="nurse">Nurse</option>
-                                            <option value="laboratory">Laboratorist</option>
-                                            <option value="pharmist">Pharmacist</option>
-                                            <option value="accountant">Accountant</option>
-                                            <option value="receptionist">Receptionist</option>
+                                            <option value="{{ $employee->role->id }}">{{ $employee->role->roleName }}</option>
                                         </select>
                                     </div>
                                 </div>
