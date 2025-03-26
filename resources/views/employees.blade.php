@@ -34,7 +34,7 @@
                 <div class="col-sm-6 col-md-3">
                     <div class="form-group form-focus select-focus">
                         <label class="focus-label">Role</label>
-                        <select class="select floating">
+                        <select name="" class="select floating">
                             <option>Select Role</option>
                             <option>Nurse</option>
                             <option>Pharmacist</option>
@@ -74,22 +74,22 @@
                                         <td>{{ $employee->phone }}</td>
                                         <td>{{ $employee->date }}</td>
                                         <td>
-                                            @if($employee->role == 'Nurse')
-                                                <span class="custom-badge status-blue">{{ $employee->role }}</span>
-                                            @elseif($employee->role == 'Pharmacist')
-                                                <span class="custom-badge status-red">{{ $employee->role }}</span>
-                                            @elseif($employee->role == 'Laboratorist')
-                                                <span class="custom-badge status-green">{{ $employee->role }}</span>
-                                            @elseif($employee->role == 'Accountant')
-                                                <span class="custom-badge status-orange">{{ $employee->role }}</span>
-                                            @elseif($employee->role == 'Receptionist')
-                                                <span class="custom-badge status-pink">{{ $employee->role }}</span>
-                                            @elseif ($employee->role == 'Admin')
-                                                <span class="custom-badge status-orange">{{ $employee->role }}</span>
-                                            @elseif($employee->role == 'Doctor')
-                                                <span class="custom-badge status-purple">{{ $employee->role }}</span>
+                                            @if($employee->role->roleName == 'Nurse')
+                                                <span class="custom-badge status-blue">{{ $employee->role->roleName }}</span>
+                                            @elseif($employee->role->roleName == 'Pharmacist')
+                                                <span class="custom-badge status-red">{{ $employee->role->roleName }}</span>
+                                            @elseif($employee->role->roleName == 'Laboratorist')
+                                                <span class="custom-badge status-green">{{ $employee->role->roleName}}</span>
+                                            @elseif($employee->role->roleName == 'Accountant')
+                                                <span class="custom-badge status-orange">{{ $employee->role->roleName }}</span>
+                                            @elseif($employee->role->roleName == 'Receptionist')
+                                                <span class="custom-badge status-pink">{{ $employee->role->roleName }}</span>
+                                            @elseif ($employee->role->roleName == 'Admin')
+                                                <span class="custom-badge status-orange">{{ $employee->role->roleName}}</span>
+                                            @elseif($employee->role->roleName == 'Doctor')
+                                                <span class="custom-badge status-purple">{{ $employee->role->roleName }}</span>
                                             @else
-                                                <span class="custom-badge status-gray">{{ $employee->role }}</span>
+                                                <span class="custom-badge status-gray">{{ $employee->role->roleName }}</span>
                                             @endif
                                         </td>
                                         <td class="text-right">

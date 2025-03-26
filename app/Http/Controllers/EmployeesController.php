@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
+use App\Models\Role;
 use Illuminate\Http\Request;
 
 class EmployeesController extends Controller
@@ -13,6 +14,7 @@ class EmployeesController extends Controller
     public function index()
     {
         $employees = Employee::all();
+        // dd($employees[0]['role']);
         return view('employees',['employees' => $employees]);
     }
 
@@ -21,7 +23,9 @@ class EmployeesController extends Controller
      */
     public function create()
     {
-        return view('add-employee');
+        $roles = Role::all();
+        return view('add-employee',['roles'=>$roles]);
+
     }
 
     /**
@@ -29,14 +33,14 @@ class EmployeesController extends Controller
      */
     public function store(Request $request)
     {
-        $credeentials = $request->validate([
+        $selectRoles = $request->input('roles');
+        $credentials = $request->validate([
             'firstname' => 'required',
             'lastname' => 'required',
             'email' => 'required|email|unique:employees',
             'username' => 'required',
             'phone' => 'required',
             'password' => 'required',
-            'role' => 'required',
             'employee_id' => 'required',
             'date' => 'required',
             'status' => 'required',
@@ -48,16 +52,16 @@ class EmployeesController extends Controller
         $employ = str_pad($employeeId, 2, '0', STR_PAD_LEFT);
 
         $employee = Employee::create([
-            'firstname' => $credeentials['firstname'],
-            'lastname' => $credeentials['lastname'],
-            'email' => $credeentials['email'],
-            'username' => $credeentials['username'],
-            'phone' => $credeentials['phone'],
-            'password' => bcrypt($credeentials['password']),
-            'role' => $credeentials['role'],
-            'employee_id' => $credeentials['employee_id'].'-000'.$employ,
-            'date' => $credeentials['date'],
-            'status' => $credeentials['status'],
+            'firstname' => $credentials['firstname'],
+            'lastname' => $credentials['lastname'],
+            'email' => $credentials['email'],
+            'username' => $credentials['username'],
+            'phone' => $credentials['phone'],
+            'password' => bcrypt($credentials['password']),
+            'role_id' => $selectRoles,
+            'employee_id' => $credentials['employee_id'].'-000'.$employ,
+            'date' => $credentials['date'],
+            'status' => $credentials['status'],
         ]);
 
         return redirect()->route('employees.index')->with('success','Employee Created Successfully');
@@ -76,7 +80,7 @@ class EmployeesController extends Controller
      */
     public function edit(string $id)
     {
-       $employee = Employee::findOrFail($id);
+       $employee = Employee::find($id);
         return view('edit-employee',['employee' => $employee]);
     }
 
@@ -85,7 +89,7 @@ class EmployeesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $credeentials = $request->validate([
+        $credentials = $request->validate([
             'firstname' => 'required',
             'lastname' => 'required',
             'email' => 'required|email',

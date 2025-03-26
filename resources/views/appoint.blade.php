@@ -41,6 +41,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($appointments as $app)
+                                   
                                             <tr>
 
                                             <td>{{$app->appointment_id }}</td>

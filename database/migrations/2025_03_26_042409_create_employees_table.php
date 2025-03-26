@@ -21,9 +21,11 @@ return new class extends Migration
             $table->string('employee_id');
             $table->string('date');
             $table->string('phone');
-            $table->string('role');
+            $table->unsignedBigInteger('role_id');
             $table->string('status');
             $table->timestamps();
+
+            $table->foreign('role_id')->references('id')->on('roles');
         });
     }
 

@@ -21,7 +21,7 @@ class AppointmentController extends Controller
         return view('appoint' , [
             'appointments' => $appointments,
         ]);
-        // dd($appointments);
+        //  dd($appointments);
     }
 
     /**

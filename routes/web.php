@@ -3,14 +3,15 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\EnsureIsValid;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\SettingController;
+use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\AppointmentController;
-use App\Http\Controllers\EmployeesController;
-use App\Http\Controllers\LeaveController;
-use App\Http\Controllers\ScheduleController;
-use App\Http\Controllers\SettingController;
 
 
 
@@ -56,4 +57,6 @@ Route::resource('leave',LeaveController::class)->middleware('verify');
 
 // settings route
 Route::resource('settings',SettingController::class)->middleware('verify');
+// Roles & Permissions route
+Route::resource('roles', RoleController::class)->middleware('verify');
 

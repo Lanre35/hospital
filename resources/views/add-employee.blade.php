@@ -75,14 +75,11 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Role</label>
-                                        <select name="role" class="select">
-                                            <option>Admin</option>
-                                            <option>Doctor</option>
-                                            <option>Nurse</option>
-                                            <option>Laboratorist</option>
-                                            <option>Pharmacist</option>
-                                            <option>Accountant</option>
-                                            <option>Receptionist</option>
+                                        <select name="roles" class="select">
+                                            <option>Select Role</option>
+                                            @foreach ($roles as $role)
+                                                <option value="{{ $role->id }}">{{ $role->roleName }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
