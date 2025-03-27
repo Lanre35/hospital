@@ -70,22 +70,23 @@ class PatientController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $patient = Patient::find($id);
 
-        $validator = $request->validate([
-            'firstname' => 'required|string',
-            'lastname' => 'required|string',
-            'username' => 'required|string',
+
+        $validators = $request->validate([
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'username' => 'required',
             'email' => 'required|email',
-            'password' => 'required|string',
+            'password' => 'required',
             'age' => 'required|min:1|max:2',
             'phone' => 'required|max:11',
             'status' => 'required',
         ]);
 
-        $patient->update($validator);
+        $update = Patient::find($id)->update($validators);
 
-        return redirect()->route('patients.index');
+        return redirect()->route('patients.index')
+            ->with('success','Patient Updated Successfully');
 
         // dd('okk');
 

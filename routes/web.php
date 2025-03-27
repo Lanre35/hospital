@@ -12,8 +12,8 @@ use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\AppointmentController;
-
-
+use App\Http\Controllers\LeaveTypeController;
+use App\Models\LeaveType;
 
 //login route.
 Route::view('/', 'login')->name('login');
@@ -54,6 +54,7 @@ Route::resource('employees',EmployeesController::class)->middleware('verify');
 // leaves route
 
 Route::resource('leave',LeaveController::class)->middleware('verify');
+Route::resource('leave-type',LeaveTypeController::class)->middleware('verify');
 
 // settings route
 Route::resource('settings',SettingController::class)->middleware('verify');

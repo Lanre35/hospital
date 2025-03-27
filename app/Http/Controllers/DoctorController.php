@@ -100,7 +100,8 @@ class DoctorController extends Controller
 
         $update->update($validator);
 
-        return redirect()->route('doctors.index');
+        return redirect()->route('doctors.index')
+            ->with('success','Updated successfully');
     }
 
     /**

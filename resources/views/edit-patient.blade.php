@@ -19,8 +19,8 @@
                 <div class="row">
                     <div class="col-lg-8 offset-lg-2">
                         <form action="{{ route('patients.update', [$patient->id]) }}" method="post">
-                            @csrf
                             @method('PUT')
+                            @csrf
                             <div class="row">
                                 <div class="col-sm-6">
                                     @error('firstname')
@@ -65,7 +65,7 @@
                                     <div class="form-group">
                                         <label>Age</label>
                                         <div class="cal-icon">
-                                            <input name="age" type="text" class="form-control datetimepicker" value="{{ $patient->age }}">
+                                            <input name="age" type="text" class="form-control" value="{{ $patient->age }}">
                                         </div>
                                     </div>
                                 </div>

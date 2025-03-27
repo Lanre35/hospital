@@ -6,12 +6,12 @@
        <x-sidebar/>
 
         <div class="page-wrapper">
-            @if (session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
             <div class="content">
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        <span>{{ session('success') }}</span>
+                    </div>
+                @endif
                 <div class="row">
                     <div class="col-sm-4 col-3">
                         <h4 class="page-title">Schedule</h4>

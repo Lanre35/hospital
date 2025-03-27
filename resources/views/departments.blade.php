@@ -8,15 +8,14 @@
         <x-sidebar/>
 
         <div class="page-wrapper">
-            @if (session('success'))
-                <div class="flash-message">
-                    <div class="alert alert-success alert-dismissible" role="alert">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <strong>{{ session('success') }}</strong>
-                    </div>
-                </div>
-            @endif
             <div class="content">
+                @if (session('success'))
+                    <div class="flash-message">
+                        <div class="alert alert-success" role="alert">
+                            <span>{{ session('success') }}</span>
+                        </div>
+                    </div>
+                @endif
                 <div class="row">
                     <div class="col-sm-5 col-5">
                         <h4 class="page-title">Departments</h4>

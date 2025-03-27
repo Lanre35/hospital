@@ -9,6 +9,11 @@
         <x-sidebar/>
         <div class="page-wrapper">
             <div class="content">
+                @if (session('success'))
+                    <div class="alert alert-success" role="alert">
+                        <span>{{ session('success') }}</span>
+                    </div>
+                @endif
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
                         <div class="dash-widget">

@@ -113,7 +113,9 @@ class ScheduleController extends Controller
             'status' => $request->input('status')
         ]);
 
-        return redirect()->route('schedule.index');
+        return redirect()->route('schedule.index')
+            ->with('success', 'Schedule deleted successfully');
+
     }
 
     /**

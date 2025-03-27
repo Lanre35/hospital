@@ -71,7 +71,8 @@ class DepartmentController extends Controller
 
         $update = $department->update($credentials);
 
-        return redirect()->route('departments.index');
+        return redirect()->route('departments.index')
+            ->with('success','Department Updated Successfully');
 
     }
 

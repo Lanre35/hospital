@@ -35,7 +35,7 @@
                     <a href="#"><i class="fa fa-lock"></i> <span>Change Password</span></a>
                 </li>
                 <li>
-                    <a href="leave-type.html"><i class="fa fa-cogs"></i> <span>Leave Type</span></a>
+                    <a href="{{ route('leave-type.index') }}"><i class="fa fa-cogs"></i> <span>Leave Type</span></a>
                 </li>
             </ul>
         </div>

@@ -6,13 +6,12 @@
         <x-sidebar />
 
         <div class="page-wrapper">
-            @if (session('success'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('success') }}
-                </div>
-
-            @endif
             <div class="content">
+                @if (session('success'))
+                    <div class="alert alert-success" role="alert">
+                        <span>{{ session('success') }}</span>
+                    </div>
+                @endif
                 <div class="row">
                     <div class="col-sm-4 col-3">
                         <h4 class="page-title">Appointments</h4>
@@ -41,7 +40,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($appointments as $app)
-                                   
+
                                             <tr>
 
                                             <td>{{$app->appointment_id }}</td>

@@ -6,7 +6,7 @@
         <div class="page-wrapper">
             <div class="content">
                 @if (session('success'))
-                    <div class="alert alert-success">
+                    <div class="alert alert-success text-center">
                         <span class="text-center">{{ session('success') }}</span>
                     </div>
 

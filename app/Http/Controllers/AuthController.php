@@ -52,7 +52,8 @@ class AuthController extends Controller
 
             // $request->session()->put('username',$request->username);
             $request->session()->put('username', $user->username);
-            return redirect()->route('dashboard');
+            return redirect()->route('dashboard')
+                ->with('success', 'You Login Successfully... Welcome Back.');
         }else{
             return back()->withErrors([
                 'failed'=> 'The credential you submited do not match our records',
